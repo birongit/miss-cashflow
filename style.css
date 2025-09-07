@@ -1,9 +1,9 @@
 :root {
-    --color-primary: #014421;
-    --color-accent: #D4AF37;
-    --color-text: #1C1C1C;
-    --color-bg: #F9F9F9;
-    --color-muted: #A9A9A9;
+    --color-primary: #538730;
+    --color-accent: #ECA72C;
+    --color-text: #242F40;
+    --color-bg: #ffffff;
+    --color-muted: #d5e3cf;
     --font-body: 'Lucida Grande', sans-serif;
     --font-heading: 'Poppins', sans-serif;
 }
@@ -12,9 +12,30 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 1rem;
 }
 
-h1, h2, h3 {
+/* Main content */
+main {
+    max-width: 750px;
+    margin: 36px auto;
+    padding: 40px 32px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 1em;
+    margin: 36px auto;
+    border-top: 1px solid var(--color-muted);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
     color: var(--color-primary);
 }
 
@@ -27,6 +48,17 @@ h1 {
     margin-bottom: 1rem;
 }
 
+/* Content */
+p {
+    margin-bottom: 1.5rem;
+}
+
+section {
+    padding: 1rem 0;
+    border-top: 1px solid #ccc;
+}
+
+/* Tagline */
 .tagline {
     color: var(--color-accent);
     text-align: center;
@@ -36,8 +68,9 @@ h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
+/* Links */
 a {
-    color: var(--color-muted);
+    color: var(--color-primary);
     text-decoration: none;
 }
 
@@ -45,46 +78,78 @@ a:hover {
     text-decoration: underline;
 }
 
-body {
-    margin: 0;
-    padding: 0 1rem;
-}
-
-main,
-footer {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 0;
-}
-
-p {
-    margin-bottom: 1rem;
-}
-
-section {
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--color-muted);
-}
-
 /* Bullet points */
 ul {
     padding-left: 1.5rem;
     list-style: disc;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
-.icon-bullets {
-    list-style: none;
-    padding-left: 0;
+/* Cards */
+.cards {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns by default */
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    gap: 16px;
 }
 
-.icon-bullets li {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns for medium screens */
+    }
 }
 
-.icon-bullets span {
-    margin-right: 0.5rem;
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+        /* 1 column for small screens */
+    }
+}
+
+.card {
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-icon {
+    height: 170px;
+    width: inherit;
+    background-color: var(--color-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    box-sizing: border-box;
+}
+
+.card-text {
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+.card-icon:hover {
+    border: 2px solid var(--color-primary);
+}
+
+.card-link {
+    text-decoration: none;
+    width: inherit
+}
+
+.card-link:hover {
+    text-decoration: none;
 }
 
 /* Form */
@@ -96,6 +161,7 @@ input[type="email"] {
     width: 100%;
     margin-bottom: 1rem;
     font-size: 1rem;
+    box-sizing: border-box;
 }
 
 label {
@@ -201,4 +267,86 @@ nav a:focus {
 nav a:hover::after,
 nav a:focus::after {
     width: 100%;
+}
+
+/* Blog posts */
+.post ul {
+    line-height: 1.8;
+    list-style: square
+}
+
+.post ol {
+    line-height: 1.8;
+}
+
+.post em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Info box */
+.note {
+    background-color: var(--color-muted);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 10px;
+    padding: 0.75em 1em;
+    margin-top: 1em;
+    font-size: 0.95em;
+}
+
+/* Table styling for property details */
+.post table {
+    border-left: 4px solid var(--color-primary);
+    border-radius: 10px;
+    padding: 0.75em 1em;
+    margin: 1rem 0 2rem 0;
+    font-size: 0.95em;
+}
+
+.post table th,
+.post table td {
+    text-align: left;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+}
+
+.post table th {
+    background: var(--color-muted);
+    font-weight: 600;
+    width: 40%;
+    border-right: 1px solid #e0e0e0;
+    background-color: var(--color-muted);
+}
+
+.post table td {
+    background: #fff;
+    color: var(--color-text);
+}
+
+.post table tr:not(:last-child) th,
+.post table tr:not(:last-child) td {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Styled list for strategy section */
+#property-details {
+    margin: 1rem 0 1.5rem 1.5rem;
+    padding-left: 1.5rem;
+    list-style-type: square;
+    background: #f8fbf5;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(83, 135, 48, 0.06);
+}
+
+#property-details li {
+    margin-bottom: 0.75rem;
+    font-size: 1.08rem;
+    color: var(--color-text);
+    line-height: 1.7;
+}
+
+#property-details li em {
+    color: var(--color-primary);
+    font-style: normal;
+    font-weight: 600;
 }
